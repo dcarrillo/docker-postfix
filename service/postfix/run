@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+set -e
+
+postconf -e inet_interfaces=all
+postconf -e inet_protocols=ipv4
+postconf -e smtp_tls_security_level=may
+
+if [ -n "$MY_HOSTNAME" ]; then
+    postconf -e myhostname="$MY_HOSTNAME"
+fi
+
+if [ -n "$MY_DOMAIN" ]; then
+    postconf -e mydomain="$MY_DOMAIN"
+fi
+
+if [ -n "$MY_NETWORKS" ]; then
+    postconf -e mynetworks="$MY_NETWORKS"
+fi
+
+if [ -n "$MY_ROOT_ALIAS" ]; then
+    echo "root: $MY_ROOT_ALIAS" > /etc/aliases
+    newaliases
+fi
+
+# Ensure rsyslog is up
+sv start rsyslog || exit 1
+
+/usr/libexec/postfix/master -c /etc/postfix -d 2>&1
