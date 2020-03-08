@@ -1,7 +1,12 @@
 FROM alpine:3.11
 
+
+ARG ARG_POSTFIX_VERSION
+ENV POSTFIX_VERSION $ARG_POSTFIX_VERSION
+
+# hadolint ignore=DL3018
 RUN apk add --no-cache \
-    postfix \
+    postfix=$POSTFIX_VERSION \
     rsyslog \
     runit
 
