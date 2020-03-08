@@ -18,9 +18,10 @@ if [ -n "$MY_NETWORKS" ]; then
 fi
 
 if [ -n "$MY_ROOT_ALIAS" ]; then
-    echo "root: $MY_ROOT_ALIAS" > /etc/aliases
-    newaliases
+    sed -iE "s/^#root:.*/root: $MY_ROOT_ALIAS/" /etc/postfix/aliases
 fi
+
+newaliases -v
 
 # Ensure rsyslog is up
 sv start rsyslog || exit 1
