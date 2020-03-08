@@ -24,7 +24,7 @@ jobs:
         run: ./build.sh
 
       - name: Run tests
-        run: ./test/test.sh
+        run: ./tests/test.sh
 
   deploy:
     runs-on: ubuntu-latest
