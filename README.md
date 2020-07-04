@@ -1,5 +1,7 @@
 # Minimal postfix docker image
 
+![build](https://github.com/dcarrillo/docker-postfix/workflows/CI/badge.svg)
+
 Simple postfix host intended for container clusters like swarm, Kubernetes, k3s, etc
 
 This image allows you to run a postfix server (**plain SMTP only**) internally inside your docker cluster installation to centralise outgoing email sending.
