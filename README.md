@@ -6,7 +6,7 @@ Simple postfix host intended for container clusters like swarm, Kubernetes, k3s,
 
 This image allows you to run a postfix server (**plain SMTP only**) internally inside your docker cluster installation to centralise outgoing email sending.
 
-This image is not for a production environment since there is no way to configure TLS, authentication, relay, etc.
+This image is not suitable for a production environment since there is no way to configure TLS, authentication, relay, etc."
 
 ## How to run
 
